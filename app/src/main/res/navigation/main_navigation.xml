@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/login"> <!-- TODO: Fix later! -->
+    app:startDestination="@id/animals">
 
     <action
         android:id="@+id/action_global_login"
@@ -25,5 +25,15 @@
         android:id="@+id/login"
         android:name="cz.upce.vetalmael.login.view.LoginFragment"
         tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/animals"
+        android:name="cz.upce.vetalmael.animals.AnimalsFragment"
+        tools:layout="@layout/fragment_animals" />
+
+    <fragment
+        android:id="@+id/reservations"
+        android:name="cz.upce.vetalmael.reservations.ReservationsFragment"
+        tools:layout="@layout/fragment_animals" />
 
 </navigation>

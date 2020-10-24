@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface VetAlmaelApi {
 
-    @POST("users/login")
+    @POST("user/login")
     suspend fun login(
         @Body body: LoginRequest
     ): LoginResponse

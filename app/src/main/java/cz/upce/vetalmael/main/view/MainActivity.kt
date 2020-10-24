@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main),
     )
 
     private val destinationsWithBottomNavigation: Set<Int> = setOf(
-        // TODO!
+        R.id.animals,
+        R.id.reservations
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

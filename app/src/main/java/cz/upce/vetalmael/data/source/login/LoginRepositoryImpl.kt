@@ -19,8 +19,8 @@ class LoginRepositoryImpl(
         )
         val response = api.login(body)
 
-        if (response.user.role != UserRole.CLIENT) {
-            throw UserRoleUnsupportedException(response.user.role)
+        if (response.user.roles != UserRole.CLIENT) {
+            throw UserRoleUnsupportedException(response.user.roles)
         }
 
         applicationRepository.setAccessToken(response.token)

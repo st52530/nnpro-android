@@ -11,5 +11,7 @@
     <string name="login">Přihlásit se</string>
     <!-- Required to show error without showing error message. -->
     <string name="space" translatable="false">\u00A0</string>
+    <string name="reservations">Rezervace</string>
+    <string name="animals">Zvířata</string>
 
 </resources>
