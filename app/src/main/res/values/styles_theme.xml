@@ -1,0 +1,79 @@
+<resources>
+
+    <style name="Theme.VetAlmael" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- The color displayed most frequently across your app’s screens and components.
+        This color should pass accessibility guidelines for text / iconography
+        when drawn on top of the surface or background color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- A tonal variation of the primary color. -->
+        <item name="colorPrimaryVariant">#2b9348</item>
+        <!-- A color that passes accessibility guidelines for text/iconography when
+        drawn on top of the primary color. -->
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- The secondary branding color for the app, usually an accented complement to the primary branding color. -->
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <!-- A tonal variation of the secondary color. -->
+        <item name="colorSecondaryVariant">#7FB81A</item>
+        <!-- A color that passes accessibility guidelines for text/iconography when
+        drawn on top of the secondary color. -->
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- The background color appears behind scrollable content. -->
+        <item name="android:colorBackground">#FFFFFF</item>
+        <!-- A color that passes accessibility guidelines for text/iconography when
+        drawn on top of the background color. -->
+        <item name="colorOnBackground">#000000</item>
+
+        <!-- Surface colors affect surfaces of components, such as cards, sheets, and menus. -->
+        <item name="colorSurface">@color/white</item>
+        <!-- A color that passes accessibility guidelines for text/iconography when drawn on top of the surface color. -->
+        <item name="colorOnSurface">#000000</item>
+
+        <!-- Error color indicates errors states, for components such as text fields -->
+        <item name="colorError">#B00020</item>
+        <!-- A color that passes accessibility guidelines for text/iconography when drawn on top of the error color. -->
+        <item name="colorOnError">@color/white</item>
+
+        <!-- Text styles. -->
+        <item name="android:textAppearance">@style/TextAppearance.VetAlmael</item>
+        <item name="textAppearanceHeadline1">@style/TextAppearance.VetAlmael.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.VetAlmael.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.VetAlmael.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.VetAlmael.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.VetAlmael.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.VetAlmael.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.VetAlmael.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.VetAlmael.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.VetAlmael.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.VetAlmael.Body2</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.VetAlmael.Caption</item>
+        <item name="textAppearanceButton">@style/TextAppearance.VetAlmael.Button</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.VetAlmael.Overline</item>
+
+        <!-- Shape styles. -->
+        <item name="shapeAppearanceSmallComponent">
+            @style/ShapeAppearance.VetAlmael.SmallComponent
+        </item>
+        <item name="shapeAppearanceMediumComponent">
+            @style/ShapeAppearance.VetAlmael.MediumComponent
+        </item>
+        <item name="shapeAppearanceLargeComponent">
+            @style/ShapeAppearance.VetAlmael.LargeComponent
+        </item>
+
+        <!-- Clear splash background. -->
+        <item name="android:windowBackground">@drawable/bg_application</item>
+
+        <!-- Widgets. -->
+        <item name="bottomNavigationStyle">@style/Widget.VetAlmael.BottomNavigationView</item>
+        <item name="toolbarStyle">@style/Widget.VetAlmael.Toolbar</item>
+        <item name="materialCardViewStyle">@style/Widget.VetAlmael.CardView</item>
+        <item name="progressIndicatorStyle">@style/Widget.VetAlmael.ProgressIndicator</item>
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox</item>
+    </style>
+
+    <style name="Theme.VetAlmael.Splash">
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+    </style>
+</resources>

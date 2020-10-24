@@ -1,0 +1,130 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'koin'
+
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
+android {
+    compileSdkVersion ApplicationConfig.targetSdk
+
+    defaultConfig {
+        applicationId "cz.upce.vetalmael"
+        minSdkVersion ApplicationConfig.minSdk
+        targetSdkVersion ApplicationConfig.targetSdk
+        versionCode ApplicationConfig.versionCode
+        versionName ApplicationConfig.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        def STRING = "String"
+        def API_URL = "API_URL"
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            // URL must end with slash.
+            buildConfigField STRING, API_URL, "\"https://vetalmael.herokuapp.com/\""
+        }
+
+        debug {
+            applicationIdSuffix ".debug"
+
+            // URL must end with slash.
+            buildConfigField STRING, API_URL, "\"https://vetalmael.herokuapp.com/\""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+
+androidExtensions {
+    // Enable LayoutContainer functionality.
+    experimental = true
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    // Activity.
+    implementation Dependencies.activity
+
+    // Adapter delegates (recyclerview).
+    implementation Dependencies.adapterDelegates
+    implementation Dependencies.adapterDelegatesLayoutContainer
+
+    // Appcompat.
+    implementation Dependencies.appCompat
+
+    // Constraint Layout.
+    implementation Dependencies.constraintLayout
+
+    // Fragment.
+    implementation Dependencies.fragment
+
+    // Http logging interceptor.
+    implementation Dependencies.httpLoggingInterceptor
+
+    // Koin.
+    implementation Dependencies.koinAndroid
+    implementation Dependencies.koinCore
+    implementation Dependencies.koinFragment
+    implementation Dependencies.koinViewModel
+
+    // Kotlin.
+    implementation Dependencies.kotlinStandardLibrary
+
+    // Kotlin coroutines.
+    implementation Dependencies.kotlinCoroutinesAndroid
+    implementation Dependencies.kotlinCoroutinesCore
+
+    // KTX.
+    implementation Dependencies.ktxCore
+
+    // Material components
+    implementation Dependencies.materialComponents
+
+    // Navigation.
+    implementation Dependencies.navigation
+    implementation Dependencies.navigationUi
+
+    // Retrofit.
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitGson
+
+    // Timber.
+    implementation Dependencies.timber
+
+    // region Testing.
+
+    // JUnit.
+    testImplementation Dependencies.jUnit
+
+    // Kotlin coroutines test.
+    testImplementation Dependencies.kotlinCoroutinesTest
+
+    // Mockk - mocking library.
+    testImplementation Dependencies.mockk
+
+    // Android test JUnit.
+    androidTestImplementation Dependencies.androidTestJunit
+
+    // Espresso.
+    androidTestImplementation Dependencies.espresso
+
+    // endregion.
+
+}

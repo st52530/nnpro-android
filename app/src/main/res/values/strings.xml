@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">VetAlmael</string>
+
+    <!-- General -->
+    <string name="general_error">Něco se nepovedlo. Zkuste to znovu.</string>
+    <string name="try_again">Zkusit znovu</string>
+
+    <!-- Login -->
+    <string name="username">Přihlašovací jméno</string>
+    <string name="password">Heslo</string>
+    <string name="login">Přihlásit se</string>
+    <!-- Required to show error without showing error message. -->
+    <string name="space" translatable="false">\u00A0</string>
+
+</resources>

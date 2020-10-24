@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Small = Button, Chip, FAB, TextField. -->
+    <style name="ShapeAppearance.VetAlmael.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+
+    </style>
+
+    <!-- Medium = Card, Dialog. -->
+    <style name="ShapeAppearance.VetAlmael.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+
+    </style>
+
+    <!-- Large = NavDrawer. -->
+    <style name="ShapeAppearance.VetAlmael.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+
+    </style>
+
+</resources>

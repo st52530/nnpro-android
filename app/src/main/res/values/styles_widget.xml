@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- region Buttom Navigation View -->
+
+    <style name="Widget.VetAlmael.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+
+    <!-- endregion -->
+
+
+    <!-- region Toolbar -->
+
+    <style name="Widget.VetAlmael.Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+
+    </style>
+
+    <!-- endregion -->
+
+    <!-- region CardView -->
+
+    <style name="Widget.VetAlmael.CardView" parent="Widget.MaterialComponents.CardView">
+
+    </style>
+
+    <!-- endregion -->
+
+    <!-- region ProgressIndicator -->
+
+    <style name="Widget.VetAlmael.ProgressIndicator" parent="Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate">
+
+    </style>
+
+    <!-- endregion -->
+</resources>

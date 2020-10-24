@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/login"> <!-- TODO: Fix later! -->
+
+    <action
+        android:id="@+id/action_global_login"
+        app:destination="@id/login"
+        app:popUpTo="@id/login"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/action_global_logout"
+        app:destination="@id/main_navigation"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right"
+        app:popUpTo="@id/main_navigation"
+        app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/login"
+        android:name="cz.upce.vetalmael.login.view.LoginFragment"
+        tools:layout="@layout/fragment_login" />
+
+</navigation>
