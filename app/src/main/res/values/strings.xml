@@ -16,5 +16,7 @@
     <string name="user">Uživatel</string>
     <string name="logout">Odhlásit se</string>
     <string name="add_animal">Přidat zvíře</string>
+    <string name="add_reservation">Vytvořit rezervaci</string>
+    <string name="reservation_title">Rezervace %s</string>
 
 </resources>

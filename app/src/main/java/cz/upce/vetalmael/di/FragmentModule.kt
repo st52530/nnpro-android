@@ -13,7 +13,7 @@ val fragmentModule = module {
 
     fragment { AnimalsFragment(get()) }
 
-    fragment { ReservationsFragment() }
+    fragment { ReservationsFragment(get()) }
 
     fragment { UserFragment(get(), get()) }
 }

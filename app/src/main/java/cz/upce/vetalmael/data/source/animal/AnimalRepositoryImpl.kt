@@ -21,7 +21,7 @@ class AnimalRepositoryImpl(
     }
 
     override suspend fun getAnimal(id: Int): Animal {
-        return animalsCache.find { it.idAnimal == id } ?: api.getAnimals(id)
+        return animalsCache.find { it.idAnimal == id } ?: api.getAnimal(id)
     }
 
     override fun erase() {
