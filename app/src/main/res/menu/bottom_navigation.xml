@@ -6,12 +6,18 @@
         android:id="@id/animals"
         android:icon="@drawable/ic_pawprint"
         android:title="@string/animals"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@id/reservations"
         android:icon="@drawable/ic_reservation"
         android:title="@string/reservations"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@id/user"
+        android:icon="@drawable/ic_user"
+        android:title="@string/user"
+        app:showAsAction="ifRoom" />
 
 </menu>

@@ -12,7 +12,7 @@
 
     <!-- region Toolbar -->
 
-    <style name="Widget.VetAlmael.Toolbar" parent="Widget.MaterialComponents.Toolbar.PrimarySurface">
+    <style name="Widget.VetAlmael.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
 
     </style>
 

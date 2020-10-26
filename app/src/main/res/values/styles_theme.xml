@@ -35,6 +35,10 @@
         <!-- A color that passes accessibility guidelines for text/iconography when drawn on top of the error color. -->
         <item name="colorOnError">@color/white</item>
 
+        <!-- Status bar color -->
+        <item name="colorPrimaryDark">#005234</item>
+        <item name="android:navigationBarColor">#005234</item>
+
         <!-- Text styles. -->
         <item name="android:textAppearance">@style/TextAppearance.VetAlmael</item>
         <item name="textAppearanceHeadline1">@style/TextAppearance.VetAlmael.Headline1</item>

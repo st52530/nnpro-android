@@ -14,5 +14,5 @@ val loginModule = module {
 
     viewModel { LoginViewModel(get(), get()) }
 
-    factory<LogoutUsecase> { LogoutUsecaseImpl(get()) }
+    factory<LogoutUsecase> { LogoutUsecaseImpl(getAll()) }
 }

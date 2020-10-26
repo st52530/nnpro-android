@@ -36,4 +36,9 @@
         android:name="cz.upce.vetalmael.reservations.ReservationsFragment"
         tools:layout="@layout/fragment_animals" />
 
+    <fragment
+        android:id="@+id/user"
+        android:name="cz.upce.vetalmael.user.UserFragment"
+        tools:layout="@layout/fragment_user" />
+
 </navigation>

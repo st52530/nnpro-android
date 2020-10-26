@@ -18,9 +18,8 @@ val apiModule = module {
     factory {
         val retrofitBuilder = Retrofit.Builder()
             .baseUrl(BuildConfig.API_URL)
+            .client(get())
             .addConverterFactory(GsonConverterFactory.create())
-
-        retrofitBuilder.client(get())
 
         retrofitBuilder.build()
     }
@@ -30,9 +29,15 @@ val apiModule = module {
 
         // Add interceptors.
         builder.addInterceptor(get<AuthenticationInterceptor>())
-        if (BuildConfig.DEBUG) {
-            builder.addInterceptor(HttpLoggingInterceptor())
+
+        val logLevel = if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor.Level.BODY
+        } else {
+            HttpLoggingInterceptor.Level.NONE
         }
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = logLevel
+        builder.addInterceptor(loggingInterceptor)
 
         builder.build()
     }
