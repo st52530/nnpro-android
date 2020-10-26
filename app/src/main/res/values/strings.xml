@@ -15,5 +15,6 @@
     <string name="animals">Zvířata</string>
     <string name="user">Uživatel</string>
     <string name="logout">Odhlásit se</string>
+    <string name="add_animal">Přidat zvíře</string>
 
 </resources>

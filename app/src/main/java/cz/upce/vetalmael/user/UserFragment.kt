@@ -20,6 +20,8 @@ class UserFragment(
         super.onViewCreated(view, savedInstanceState)
         showCurrentUserInfo()
 
+        contentLoadinglayout.setTryAgainListener { showCurrentUserInfo() }
+
         logoutButton.setOnClickListener {
             logout()
         }
