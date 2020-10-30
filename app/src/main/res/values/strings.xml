@@ -23,4 +23,7 @@
     <string name="email">E-mail</string>
     <string name="register_now">Nemáte účet? Registrujte se!</string>
     <string name="register">Registrovat</string>
+    <string name="email_error">Zadejte validní e-mail.</string>
+    <string name="different_passwords_error">Zadaná hesla nejsou stejná.</string>
+    <string name="password_too_short_error">Heslo musí obsahovat alespoň 8 znaků.</string>
 </resources>

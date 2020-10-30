@@ -19,7 +19,7 @@
             android:src="@drawable/ic_close"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/colorPrimary" />
+            app:tint="@color/colorSecondary" />
 
         <ImageView
             android:id="@+id/logoImageView"
@@ -48,7 +48,7 @@
                 android:id="@+id/fullNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword" />
+                android:inputType="textCapWords" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +78,7 @@
             android:layout_height="1dp"
             android:layout_marginHorizontal="50dp"
             android:layout_marginTop="8dp"
-            android:background="@color/black"
+            android:background="@color/colorSecondary"
             app:layout_constraintEnd_toEndOf="@id/emailTextLayout"
             app:layout_constraintStart_toStartOf="@id/emailTextLayout"
             app:layout_constraintTop_toBottomOf="@id/emailTextLayout" />
