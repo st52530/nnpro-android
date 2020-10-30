@@ -21,7 +21,8 @@ class ReservationRepositoryImpl(
     }
 
     override suspend fun getReservation(id: Int): Reservation {
-        return cache.find { it.idReservation == id } ?: api.getReservation(id)
+        val predicate: (Reservation) -> Boolean = { it.idReservation == id }
+        return cache.find(predicate) ?: api.getReservations().find(predicate)!!
     }
 
     override fun erase() {

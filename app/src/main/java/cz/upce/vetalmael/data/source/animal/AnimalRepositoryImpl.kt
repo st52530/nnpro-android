@@ -21,7 +21,8 @@ class AnimalRepositoryImpl(
     }
 
     override suspend fun getAnimal(id: Int): Animal {
-        return animalsCache.find { it.idAnimal == id } ?: api.getAnimal(id)
+        val predicate: (Animal) -> Boolean = { it.idAnimal == id }
+        return animalsCache.find(predicate) ?: api.getAnimals().find(predicate)!!
     }
 
     override fun erase() {

@@ -11,20 +11,20 @@ import retrofit2.http.Path
 
 interface VetAlmaelApi {
 
-    @POST("user/login")
+    @POST("users/login")
     suspend fun login(
         @Body body: LoginRequest
     ): LoginResponse
 
-    @GET("animal/s")
+    @GET("/clients/animals")
     suspend fun getAnimals(): List<Animal>
 
-    @GET("animal/{id}")
-    suspend fun getAnimal(@Path("id") id: Int): Animal
+//    @GET("animals/{id}")
+//    suspend fun getAnimal(@Path("id") id: Int): Animal
 
-    @GET("reservation/s")
+    @GET("/clients/reservations")
     suspend fun getReservations(): List<Reservation>
 
-    @GET("reservation/{id}")
-    suspend fun getReservation(@Path("id") id: Int): Reservation
+//    @GET("reservation/{id}")
+//    suspend fun getReservation(@Path("id") id: Int): Reservation
 }
