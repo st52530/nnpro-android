@@ -1,8 +1,8 @@
 package cz.upce.vetalmael.registration.domain
 
 import cz.upce.vetalmael.api.VetAlmaelApi
+import cz.upce.vetalmael.data.model.SignUpBody
 import cz.upce.vetalmael.data.source.login.LoginRepository
-import cz.upce.vetalmael.registration.domain.RegistrationUseCase
 
 class RegistrationUseCaseImpl(
     private val api: VetAlmaelApi,
@@ -15,6 +15,12 @@ class RegistrationUseCaseImpl(
         email: String,
         password: String
     ) {
-        TODO("Not yet implemented")
+        val body = SignUpBody(
+            username, fullName, email, password
+        )
+        api.signUp(body)
+
+        // Log in after registration to continue straight into the app.
+        loginRepository.login(username, password)
     }
 }

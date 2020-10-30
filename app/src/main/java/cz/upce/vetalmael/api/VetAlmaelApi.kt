@@ -1,9 +1,6 @@
 package cz.upce.vetalmael.api
 
-import cz.upce.vetalmael.data.model.Animal
-import cz.upce.vetalmael.data.model.LoginRequest
-import cz.upce.vetalmael.data.model.LoginResponse
-import cz.upce.vetalmael.data.model.Reservation
+import cz.upce.vetalmael.data.model.*
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -27,4 +24,7 @@ interface VetAlmaelApi {
 
 //    @GET("reservation/{id}")
 //    suspend fun getReservation(@Path("id") id: Int): Reservation
+
+    @POST("clients/sign-up")
+    suspend fun signUp(@Body body: SignUpBody): User
 }

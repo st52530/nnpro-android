@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import cz.upce.vetalmael.MainNavigationDirections
 import cz.upce.vetalmael.R
 import cz.upce.vetalmael.extensions.safeSetError
-import cz.upce.vetalmael.extensions.setVisibleOrGone
+import cz.upce.vetalmael.extensions.setVisibleOrInvisible
 import cz.upce.vetalmael.registration.domain.RegistrationUseCase
 import kotlinx.android.synthetic.main.fragment_registration.*
 import timber.log.Timber
@@ -142,8 +142,8 @@ class RegistrationFragment(
     }
 
     private fun showLoading(show: Boolean) {
-        registerButton.setVisibleOrGone(!show)
-        progressBar.setVisibleOrGone(show)
+        registerButton.setVisibleOrInvisible(!show)
+        progressBar.setVisibleOrInvisible(show)
     }
 
     companion object {
