@@ -8,6 +8,7 @@
     <!-- Login -->
     <string name="username">Přihlašovací jméno</string>
     <string name="password">Heslo</string>
+    <string name="password_again">Heslo znovu</string>
     <string name="login">Přihlásit se</string>
     <!-- Required to show error without showing error message. -->
     <string name="space" translatable="false">\u00A0</string>
@@ -18,5 +19,8 @@
     <string name="add_animal">Přidat zvíře</string>
     <string name="add_reservation">Vytvořit rezervaci</string>
     <string name="reservation_title">Rezervace %s</string>
-
+    <string name="full_name">Pravé jméno</string>
+    <string name="email">E-mail</string>
+    <string name="register_now">Nemáte účet? Registrujte se!</string>
+    <string name="register">Registrovat</string>
 </resources>

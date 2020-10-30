@@ -3,6 +3,8 @@ package cz.upce.vetalmael.login.view
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import androidx.core.text.buildSpannedString
+import androidx.core.text.underline
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -14,6 +16,13 @@ import cz.upce.vetalmael.login.viewmodel.data.LoginViewData
 import cz.upce.vetalmael.login.viewmodel.LoginViewModel
 import cz.upce.vetalmael.login.viewmodel.data.FinishLogin
 import kotlinx.android.synthetic.main.fragment_login.*
+import kotlinx.android.synthetic.main.fragment_login.passwordEditText
+import kotlinx.android.synthetic.main.fragment_login.passwordTextLayout
+import kotlinx.android.synthetic.main.fragment_login.progressBar
+import kotlinx.android.synthetic.main.fragment_login.registerButton
+import kotlinx.android.synthetic.main.fragment_login.usernameEditText
+import kotlinx.android.synthetic.main.fragment_login.usernameTextLayout
+import kotlinx.android.synthetic.main.fragment_registration.*
 
 class LoginFragment(
     private val viewModel: LoginViewModel
@@ -22,8 +31,22 @@ class LoginFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        underlineRegisterNow()
         setupUiListeners()
         observeViewModel()
+    }
+
+    private fun underlineRegisterNow() {
+        val text = registerButton.text.toString()
+        // Underline the part after ?
+        val underlineIndex = text.indexOf("?")
+
+        registerButton.text = buildSpannedString {
+            append(text.substring(0, underlineIndex + 2))
+            underline {
+                append(text.substring(underlineIndex + 2))
+            }
+        }
     }
 
     private fun setupUiListeners() {
@@ -43,6 +66,10 @@ class LoginFragment(
                 viewModel.login()
             }
             false
+        }
+
+        registerButton.setOnClickListener {
+            findNavController().navigate(LoginFragmentDirections.actionLoginToRegistration())
         }
     }
 

@@ -6,7 +6,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp">
 
         <ImageView
             android:id="@+id/logoImageView"
@@ -83,5 +84,20 @@
             app:layout_constraintEnd_toEndOf="@id/loginButton"
             app:layout_constraintStart_toStartOf="@id/loginButton"
             app:layout_constraintTop_toTopOf="@id/loginButton" />
+
+        <TextView
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="?attr/selectableItemBackground"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="6dp"
+            android:text="@string/register_now"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@id/loginButton"
+            app:layout_constraintStart_toStartOf="@id/loginButton"
+            app:layout_constraintTop_toBottomOf="@id/loginButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

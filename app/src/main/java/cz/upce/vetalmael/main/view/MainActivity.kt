@@ -41,7 +41,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main),
         get() = navHostFragment.findNavController()
 
     private val publicSectionIds = setOf(
-        R.id.login
+        R.id.login,
+        R.id.registration
     )
 
     private val destinationsWithBottomNavigation: Set<Int> = setOf(
