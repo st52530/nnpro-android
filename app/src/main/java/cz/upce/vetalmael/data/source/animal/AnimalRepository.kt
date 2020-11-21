@@ -5,7 +5,7 @@ import cz.upce.vetalmael.data.model.Animal
 
 interface AnimalRepository : ErasableRepository {
 
-    suspend fun getAnimals(): List<Animal>
+    suspend fun getAnimals(force: Boolean): List<Animal>
 
     suspend fun getAnimal(id: Int): Animal
 }

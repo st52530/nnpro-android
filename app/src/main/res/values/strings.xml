@@ -26,4 +26,7 @@
     <string name="email_error">Zadejte validní e-mail.</string>
     <string name="different_passwords_error">Zadaná hesla nejsou stejná.</string>
     <string name="password_too_short_error">Heslo musí obsahovat alespoň 8 znaků.</string>
+
+    <string name="empty_animal_list">Nemáte žádné zvíře.\nPřidejte ho pomocí tlačítka plus vpravo dole.</string>
+    <string name="empty_reservation_list">Nemáte žádné rezervace.\nRezervujte si termín pomocí tlačítka plus vpravo dole.</string>
 </resources>

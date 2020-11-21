@@ -9,8 +9,8 @@ class ReservationRepositoryImpl(
 
     private var cache: List<Reservation> = emptyList()
 
-    override suspend fun getReservations(): List<Reservation> {
-        if (cache.isNotEmpty()) {
+    override suspend fun getReservations(force: Boolean): List<Reservation> {
+        if (!force && cache.isNotEmpty()) {
             return cache
         }
 
@@ -22,7 +22,7 @@ class ReservationRepositoryImpl(
 
     override suspend fun getReservation(id: Int): Reservation {
         val predicate: (Reservation) -> Boolean = { it.idReservation == id }
-        return cache.find(predicate) ?: api.getReservations().find(predicate)!!
+        return getReservations(false).find(predicate) ?: getReservations(true).find(predicate)!!
     }
 
     override fun erase() {

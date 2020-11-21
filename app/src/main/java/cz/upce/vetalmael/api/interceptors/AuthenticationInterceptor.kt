@@ -40,7 +40,9 @@ class AuthenticationInterceptor(
         val response = chain.proceed(newRequestBuilder.build())
 
         // Logout when any request fails on authorization.
-        if (response.code == HttpURLConnection.HTTP_UNAUTHORIZED) {
+        if (response.code == HttpURLConnection.HTTP_UNAUTHORIZED ||
+            response.code == HttpURLConnection.HTTP_FORBIDDEN
+        ) {
             runBlocking {
                 get<LogoutUsecase>().logout()
 

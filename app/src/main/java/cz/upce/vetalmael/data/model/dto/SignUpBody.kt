@@ -1,4 +1,4 @@
-package cz.upce.vetalmael.data.model
+package cz.upce.vetalmael.data.model.dto
 
 data class SignUpBody(
     val username: String,

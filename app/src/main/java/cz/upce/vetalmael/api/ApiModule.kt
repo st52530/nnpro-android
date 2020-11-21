@@ -1,10 +1,13 @@
 package cz.upce.vetalmael.api
 
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import cz.upce.vetalmael.BuildConfig
 import cz.upce.vetalmael.api.interceptors.AuthenticationInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -19,9 +22,19 @@ val apiModule = module {
         val retrofitBuilder = Retrofit.Builder()
             .baseUrl(BuildConfig.API_URL)
             .client(get())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(get())
 
         retrofitBuilder.build()
+    }
+
+    factory< Converter.Factory> {
+        GsonConverterFactory.create(get())
+    }
+
+    factory {
+        GsonBuilder()
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
+            .create()
     }
 
     factory {

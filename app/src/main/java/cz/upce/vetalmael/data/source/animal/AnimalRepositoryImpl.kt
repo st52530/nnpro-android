@@ -9,8 +9,8 @@ class AnimalRepositoryImpl(
 
     private var animalsCache: List<Animal> = emptyList()
 
-    override suspend fun getAnimals(): List<Animal> {
-        if (animalsCache.isNotEmpty()) {
+    override suspend fun getAnimals(force: Boolean): List<Animal> {
+        if (!force && animalsCache.isNotEmpty()) {
             return animalsCache
         }
 
@@ -22,7 +22,7 @@ class AnimalRepositoryImpl(
 
     override suspend fun getAnimal(id: Int): Animal {
         val predicate: (Animal) -> Boolean = { it.idAnimal == id }
-        return animalsCache.find(predicate) ?: api.getAnimals().find(predicate)!!
+        return getAnimals(false).find(predicate) ?: api.getAnimal(id)
     }
 
     override fun erase() {

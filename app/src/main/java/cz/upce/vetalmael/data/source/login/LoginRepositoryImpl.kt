@@ -2,7 +2,7 @@ package cz.upce.vetalmael.data.source.login
 
 import cz.upce.vetalmael.api.VetAlmaelApi
 import cz.upce.vetalmael.data.exception.UserRoleUnsupportedException
-import cz.upce.vetalmael.data.model.LoginRequest
+import cz.upce.vetalmael.data.model.dto.LoginRequest
 import cz.upce.vetalmael.data.model.User
 import cz.upce.vetalmael.data.model.UserRole
 import cz.upce.vetalmael.data.source.application.ApplicationRepository

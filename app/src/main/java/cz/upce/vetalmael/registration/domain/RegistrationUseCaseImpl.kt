@@ -1,7 +1,7 @@
 package cz.upce.vetalmael.registration.domain
 
 import cz.upce.vetalmael.api.VetAlmaelApi
-import cz.upce.vetalmael.data.model.SignUpBody
+import cz.upce.vetalmael.data.model.dto.SignUpBody
 import cz.upce.vetalmael.data.source.login.LoginRepository
 
 class RegistrationUseCaseImpl(
