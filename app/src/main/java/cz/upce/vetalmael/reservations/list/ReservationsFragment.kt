@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import cz.upce.vetalmael.R
 import cz.upce.vetalmael.core.view.recyclerview.DiffUtilAdapter
 import cz.upce.vetalmael.core.view.recyclerview.IdentifiableDiffUtilAdapter
@@ -12,6 +13,7 @@ import cz.upce.vetalmael.data.source.reservation.ReservationRepository
 import cz.upce.vetalmael.extensions.setVisibleOrGone
 import kotlinx.android.synthetic.main.fragment_reservations.*
 import kotlinx.android.synthetic.main.include_empty_state.*
+import timber.log.Timber
 import java.text.SimpleDateFormat
 
 class ReservationsFragment(
@@ -49,7 +51,9 @@ class ReservationsFragment(
         lifecycleScope.launchWhenCreated {
             contentLoadinglayout.showLoading()
             try {
-                val reservations = reservationRepository.getReservations(force).map { reservation ->
+                val reservations = reservationRepository.getReservations(force)
+                    .sortedByDescending { it.date }
+                    .map { reservation ->
                     ReservationViewData(
                         reservation.idReservation.toString(),
                         reservation.clinic.name,
@@ -67,6 +71,24 @@ class ReservationsFragment(
     }
 
     private fun onReservationClicked(reservation: ReservationViewData) {
-        // TODO: Handle reservation click.
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Zrušit rezervaci")
+            .setMessage("Opravdu chcete zrušit tuto rezervaci?\nRezervace: ${reservation.date} ${reservation.time}")
+            .setPositiveButton("Zrušit rezervaci") { _, _ ->
+                lifecycleScope.launchWhenCreated {
+                    try {
+                        reservationRepository.deleteReservation(reservation.id.toInt())
+                        adapter.items = adapter.items.toMutableList().apply {
+                            remove(reservation)
+                        }
+                    } catch (exception: Exception) {
+                        Timber.e(exception)
+                    }
+                }
+            }
+            .setNegativeButton("Nerušit") { _, _ ->
+                // Do nothing.
+            }
+            .show()
     }
 }

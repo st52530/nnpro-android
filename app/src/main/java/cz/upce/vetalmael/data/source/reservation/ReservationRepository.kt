@@ -11,4 +11,6 @@ interface ReservationRepository : ErasableRepository {
     suspend fun getReservation(id: Int): Reservation
 
     suspend fun addReservation(clinicId: Int, date: Date)
+
+    suspend fun deleteReservation(reservationId: Int)
 }

@@ -3,6 +3,7 @@ package cz.upce.vetalmael.api
 import cz.upce.vetalmael.data.model.*
 import cz.upce.vetalmael.data.model.dto.*
 import okhttp3.ResponseBody
+import retrofit2.Response
 import retrofit2.http.*
 
 interface VetAlmaelApi {
@@ -25,7 +26,7 @@ interface VetAlmaelApi {
     ): Animal
 
     @DELETE("animals/{id}")
-    suspend fun deleteAnimal(@Path("id") id: Int)
+    suspend fun deleteAnimal(@Path("id") id: Int): Response<Unit>
 
     @GET("animals/{id}/messages")
     suspend fun getAnimalMessages(@Path("id") id: Int): List<Message>
@@ -45,6 +46,9 @@ interface VetAlmaelApi {
         @Path("idClient") idClient: Int,
         @Body body: CreateReservationRequest
     ): Reservation
+
+    @DELETE("reservations/{id}")
+    suspend fun deleteReservation(@Path("id") id: Int): Response<Unit>
 
     @POST("clients/sign-up")
     suspend fun signUp(@Body body: SignUpBody): User

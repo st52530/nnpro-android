@@ -6,6 +6,7 @@ import cz.upce.vetalmael.data.model.dto.CreateReservationRequest
 import cz.upce.vetalmael.data.source.application.ApplicationRepository
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+import java.lang.IllegalStateException
 import java.util.*
 
 class ReservationRepositoryImpl(
@@ -40,6 +41,16 @@ class ReservationRepositoryImpl(
 
         val newCache = cache.toMutableList()
         newCache.add(reservation)
+        cache = newCache.toList()
+    }
+
+    override suspend fun deleteReservation(reservationId: Int) {
+        if (!api.deleteReservation(reservationId).isSuccessful) {
+            throw IllegalStateException("API Error!")
+        }
+
+        val newCache = cache.toMutableList()
+        newCache.removeAll { it.idReservation == reservationId }
         cache = newCache.toList()
     }
 
