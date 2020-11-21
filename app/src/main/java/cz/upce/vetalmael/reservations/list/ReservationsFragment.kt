@@ -12,6 +12,10 @@ import cz.upce.vetalmael.core.view.recyclerview.IdentifiableDiffUtilAdapter
 import cz.upce.vetalmael.data.source.reservation.ReservationRepository
 import cz.upce.vetalmael.extensions.setVisibleOrGone
 import kotlinx.android.synthetic.main.fragment_reservations.*
+import kotlinx.android.synthetic.main.fragment_reservations.addButton
+import kotlinx.android.synthetic.main.fragment_reservations.contentLoadinglayout
+import kotlinx.android.synthetic.main.fragment_reservations.emptyStateLayout
+import kotlinx.android.synthetic.main.fragment_reservations.recyclerView
 import kotlinx.android.synthetic.main.include_empty_state.*
 import timber.log.Timber
 import java.text.SimpleDateFormat
@@ -80,6 +84,7 @@ class ReservationsFragment(
                         reservationRepository.deleteReservation(reservation.id.toInt())
                         adapter.items = adapter.items.toMutableList().apply {
                             remove(reservation)
+                            emptyStateLayout.setVisibleOrGone(isEmpty())
                         }
                     } catch (exception: Exception) {
                         Timber.e(exception)

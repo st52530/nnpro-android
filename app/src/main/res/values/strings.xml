@@ -34,4 +34,7 @@
     <string name="time_of_visit">Čas návštěvy</string>
     <string name="select_date">Vybrat datum</string>
     <string name="select_time">Vybrat čas</string>
+    <string name="reports">Reporty</string>
+    <string name="messages">Zprávy</string>
+    <string name="delete">Smazat</string>
 </resources>

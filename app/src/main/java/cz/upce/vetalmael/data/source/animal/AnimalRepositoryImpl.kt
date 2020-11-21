@@ -6,6 +6,7 @@ import cz.upce.vetalmael.data.model.dto.AddAnimalRequest
 import cz.upce.vetalmael.data.source.application.ApplicationRepository
 import org.koin.core.KoinComponent
 import org.koin.core.inject
+import java.lang.IllegalStateException
 
 class AnimalRepositoryImpl(
     private val api: VetAlmaelApi
@@ -36,9 +37,19 @@ class AnimalRepositoryImpl(
         val userId = applicationRepository.getCurrentUser()?.idUser!!
         val body = AddAnimalRequest(name)
         val animal = api.addAnimal(userId, body)
-        
+
         val newCache = animalsCache.toMutableList()
         newCache.add(animal)
+        animalsCache = newCache.toList()
+    }
+
+    override suspend fun deleteAnimal(id: Int) {
+        if (!api.deleteAnimal(id).isSuccessful) {
+            throw IllegalStateException("API Error!")
+        }
+
+        val newCache = animalsCache.toMutableList()
+        newCache.removeAll { it.idAnimal == id }
         animalsCache = newCache.toList()
     }
 

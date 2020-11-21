@@ -5,11 +5,19 @@ import cz.upce.vetalmael.R
 import kotlinx.android.synthetic.main.item_animal.*
 
 fun animalDelegate(
-    onItemClicked: (AnimalViewData) -> Unit
+    onMessagesClicked: (AnimalViewData) -> Unit,
+    onReportsClicked: (AnimalViewData) -> Unit,
+    onDeleteClicked: (AnimalViewData) -> Unit
 ) = adapterDelegateLayoutContainer<
         AnimalViewData, AnimalViewData>(R.layout.item_animal) {
-    itemView.setOnClickListener {
-        onItemClicked(item)
+    messagesButton.setOnClickListener {
+        onMessagesClicked(item)
+    }
+    reportsButton.setOnClickListener {
+        onReportsClicked(item)
+    }
+    deleteButton.setOnClickListener {
+        onDeleteClicked(item)
     }
 
     bind {

@@ -10,4 +10,6 @@ interface AnimalRepository : ErasableRepository {
     suspend fun getAnimal(id: Int): Animal
 
     suspend fun addAnimal(name: String)
+
+    suspend fun deleteAnimal(id: Int)
 }
