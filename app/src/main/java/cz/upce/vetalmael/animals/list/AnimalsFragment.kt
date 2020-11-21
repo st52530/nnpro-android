@@ -21,7 +21,7 @@ class AnimalsFragment(
 
     private val adapter: DiffUtilAdapter<AnimalViewData> by lazy {
         IdentifiableDiffUtilAdapter(
-            animalDelegate(::onReportsClicked, ::onMessagesClicked, ::onDeleteClicked)
+            animalDelegate(::onMessagesClicked, ::onReportsClicked, ::onDeleteClicked)
         )
     }
 
@@ -66,7 +66,7 @@ class AnimalsFragment(
     }
 
     private fun onMessagesClicked(animal: AnimalViewData) {
-        // TODO: Handle animal click.
+        findNavController().navigate(AnimalsFragmentDirections.actionAnimalsToMessages(animal.id.toInt()))
     }
 
     private fun onDeleteClicked(animal: AnimalViewData) {

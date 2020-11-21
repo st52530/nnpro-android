@@ -54,6 +54,14 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_animals_to_messages"
+            app:destination="@id/messages"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -79,6 +87,15 @@
         android:id="@+id/add_reservation"
         android:name="cz.upce.vetalmael.reservations.add.AddReservationFragment"
         tools:layout="@layout/fragment_add_reservation" />
+
+    <fragment
+        android:id="@+id/messages"
+        android:name="cz.upce.vetalmael.messages.MessagesFragment"
+        tools:layout="@layout/fragment_messages">
+        <argument
+            android:name="animalId"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/user"

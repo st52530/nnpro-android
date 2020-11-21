@@ -2,7 +2,9 @@ package cz.upce.vetalmael.data.source.animal
 
 import cz.upce.vetalmael.api.VetAlmaelApi
 import cz.upce.vetalmael.data.model.Animal
+import cz.upce.vetalmael.data.model.Message
 import cz.upce.vetalmael.data.model.dto.AddAnimalRequest
+import cz.upce.vetalmael.data.model.dto.SendMessageRequest
 import cz.upce.vetalmael.data.source.application.ApplicationRepository
 import org.koin.core.KoinComponent
 import org.koin.core.inject
@@ -51,6 +53,15 @@ class AnimalRepositoryImpl(
         val newCache = animalsCache.toMutableList()
         newCache.removeAll { it.idAnimal == id }
         animalsCache = newCache.toList()
+    }
+
+    override suspend fun getMessages(animalId: Int): List<Message> {
+        return api.getAnimalMessages(animalId)
+    }
+
+    override suspend fun sendMessage(animalId: Int, message: String): Message {
+        val body = SendMessageRequest(message)
+        return api.sendMessage(animalId, body)
     }
 
     override fun erase() {

@@ -31,6 +31,9 @@ interface VetAlmaelApi {
     @GET("animals/{id}/messages")
     suspend fun getAnimalMessages(@Path("id") id: Int): List<Message>
 
+    @POST("/messages/animal/{idAnimal}")
+    suspend fun sendMessage(@Path("idAnimal") animalId: Int, @Body body: SendMessageRequest): Message
+
     @GET("animals/{id}/reports")
     suspend fun getAnimalReports(@Path("id") id: Int): List<Report>
 
