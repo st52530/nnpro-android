@@ -30,7 +30,7 @@ class RegistrationFragment(
             findNavController().navigateUp()
         }
 
-        fullNameEditText.doOnTextChanged { text, _, _, _ ->
+        fullNameEditText.doOnTextChanged { _, _, _, _ ->
             validateInput()
         }
 
@@ -38,7 +38,7 @@ class RegistrationFragment(
             validateInput()
         }
 
-        usernameEditText.doOnTextChanged { text, _, _, _ ->
+        usernameEditText.doOnTextChanged { _, _, _, _ ->
             validateInput()
         }
 

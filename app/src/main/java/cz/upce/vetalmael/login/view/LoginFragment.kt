@@ -102,7 +102,7 @@ class LoginFragment(
     }
 
     private fun onEvent(event: Event<LoginEvent>) {
-        when (val data = event.consume()) {
+        when (event.consume()) {
             is FinishLogin -> findNavController().navigateUp()
         }
     }

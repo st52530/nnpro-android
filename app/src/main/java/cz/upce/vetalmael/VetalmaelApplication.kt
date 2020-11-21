@@ -6,19 +6,22 @@ import cz.upce.vetalmael.data.source.di.dataSourceModule
 import cz.upce.vetalmael.di.fragmentModule
 import cz.upce.vetalmael.di.koinFeatureModules
 import cz.upce.vetalmael.utils.di.utilsModule
-import org.koin.android.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.fragment.koin.fragmentFactory
 import org.koin.core.KoinComponent
 import org.koin.core.context.startKoin
-import org.koin.core.get
 import org.koin.core.logger.Level
+import timber.log.Timber
 
 class VetalmaelApplication : Application(), KoinComponent {
 
     override fun onCreate() {
         super.onCreate()
+        if (BuildConfig.DEBUG) {
+            Timber.plant(Timber.DebugTree())
+        }
+
         setupDependencyInjection()
     }
 

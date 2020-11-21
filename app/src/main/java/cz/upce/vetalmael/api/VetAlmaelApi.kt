@@ -39,7 +39,7 @@ interface VetAlmaelApi {
 //    @GET("reservation/{id}")
 //    suspend fun getReservation(@Path("id") id: Int): Reservation
 
-    @GET("reservations/clinic/{idClinic}/client/{idClient}")
+    @POST("reservations/clinic/{idClinic}/client/{idClient}")
     suspend fun createReservation(
         @Path("idClinic") idClinic: Int,
         @Path("idClient") idClient: Int,
@@ -51,4 +51,7 @@ interface VetAlmaelApi {
 
     @GET("export/{idReport}")
     suspend fun exportReport(@Path("idReport") idReport: Int): ResponseBody
+
+    @GET("clinics")
+    suspend fun getClinics(): List<Clinic>
 }

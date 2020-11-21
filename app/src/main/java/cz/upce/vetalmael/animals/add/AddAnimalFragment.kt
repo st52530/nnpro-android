@@ -23,6 +23,8 @@ class AddAnimalFragment(
     }
 
     private fun setupUiListeners() {
+        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+
         nameEditText.doOnTextChanged { text, _, _, _ ->
             saveButton.isEnabled = text?.isNotEmpty() == true
         }

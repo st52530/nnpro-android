@@ -1,4 +1,4 @@
-package cz.upce.vetalmael.reservations
+package cz.upce.vetalmael.reservations.list
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateLayoutContainer
 import cz.upce.vetalmael.R
@@ -13,6 +13,7 @@ fun reservationDelegate(
     }
 
     bind {
+        clinicTextView.text = item.clinic
         dateTextView.text = getString(R.string.reservation_title, item.date)
         timeTextView.text = item.time
     }

@@ -33,7 +33,7 @@ val apiModule = module {
 
     factory {
         GsonBuilder()
-            .setDateFormat("yyyy-MM-dd'T'HH:mm:ssz")
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ssX")
             .create()
     }
 

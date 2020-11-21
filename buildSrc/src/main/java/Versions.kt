@@ -16,7 +16,7 @@ object Versions {
 
     const val fragment = "1.2.5"
 
-    const val gradle = "4.0.2"
+    const val gradle = "4.1.1"
 
     const val jUnit = "4.13"
 
@@ -28,7 +28,7 @@ object Versions {
 
     const val ktxCore = "1.3.1"
 
-    const val materialComponents = "1.3.0-alpha02"
+    const val materialComponents = "1.3.0-alpha03"
 
     const val mockk = "1.10.0"
 

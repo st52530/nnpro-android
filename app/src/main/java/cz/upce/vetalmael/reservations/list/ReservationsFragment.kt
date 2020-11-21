@@ -1,15 +1,16 @@
-package cz.upce.vetalmael.reservations
+package cz.upce.vetalmael.reservations.list
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import cz.upce.vetalmael.R
 import cz.upce.vetalmael.core.view.recyclerview.DiffUtilAdapter
 import cz.upce.vetalmael.core.view.recyclerview.IdentifiableDiffUtilAdapter
 import cz.upce.vetalmael.data.source.reservation.ReservationRepository
 import cz.upce.vetalmael.extensions.setVisibleOrGone
-import kotlinx.android.synthetic.main.fragment_animals.*
+import kotlinx.android.synthetic.main.fragment_reservations.*
 import kotlinx.android.synthetic.main.include_empty_state.*
 import java.text.SimpleDateFormat
 
@@ -25,7 +26,7 @@ class ReservationsFragment(
 
     private val dateFormat = SimpleDateFormat("dd. MM. yyyy")
 
-    private val timeFormat = SimpleDateFormat("hh:mm")
+    private val timeFormat = SimpleDateFormat("HH:mm")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +36,10 @@ class ReservationsFragment(
 
         contentLoadinglayout.setTryAgainListener {
             loadReservations(true)
+        }
+
+        addButton.setOnClickListener {
+            findNavController().navigate(ReservationsFragmentDirections.actionReservationsToAddReservation())
         }
 
         loadReservations()
@@ -47,6 +52,7 @@ class ReservationsFragment(
                 val reservations = reservationRepository.getReservations(force).map { reservation ->
                     ReservationViewData(
                         reservation.idReservation.toString(),
+                        reservation.clinic.name,
                         dateFormat.format(reservation.date),
                         timeFormat.format(reservation.date)
                     )
@@ -61,6 +67,6 @@ class ReservationsFragment(
     }
 
     private fun onReservationClicked(reservation: ReservationViewData) {
-        // TODO: Handle animal click.
+        // TODO: Handle reservation click.
     }
 }
