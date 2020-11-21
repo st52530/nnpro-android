@@ -8,4 +8,6 @@ interface AnimalRepository : ErasableRepository {
     suspend fun getAnimals(force: Boolean): List<Animal>
 
     suspend fun getAnimal(id: Int): Animal
+
+    suspend fun addAnimal(name: String)
 }

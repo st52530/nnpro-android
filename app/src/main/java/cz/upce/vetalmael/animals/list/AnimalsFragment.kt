@@ -1,9 +1,10 @@
-package cz.upce.vetalmael.animals
+package cz.upce.vetalmael.animals.list
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import cz.upce.vetalmael.R
 import cz.upce.vetalmael.core.view.recyclerview.DiffUtilAdapter
 import cz.upce.vetalmael.core.view.recyclerview.IdentifiableDiffUtilAdapter
@@ -30,6 +31,10 @@ class AnimalsFragment(
 
         contentLoadinglayout.setTryAgainListener {
             loadAnimals(true)
+        }
+
+        addButton.setOnClickListener {
+            findNavController().navigate(AnimalsFragmentDirections.actionAnimalsToAddAnimal())
         }
 
         loadAnimals()

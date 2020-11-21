@@ -1,4 +1,4 @@
-package cz.upce.vetalmael.animals
+package cz.upce.vetalmael.animals.list
 
 import cz.upce.vetalmael.core.view.recyclerview.Identifiable
 

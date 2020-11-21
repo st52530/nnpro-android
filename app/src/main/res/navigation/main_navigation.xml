@@ -44,8 +44,22 @@
 
     <fragment
         android:id="@+id/animals"
-        android:name="cz.upce.vetalmael.animals.AnimalsFragment"
-        tools:layout="@layout/fragment_animals" />
+        android:name="cz.upce.vetalmael.animals.list.AnimalsFragment"
+        tools:layout="@layout/fragment_animals">
+
+        <action
+            android:id="@+id/action_animals_to_add_animal"
+            app:destination="@id/add_animal"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_animal"
+        android:name="cz.upce.vetalmael.animals.add.AddAnimalFragment"
+        tools:layout="@layout/fragment_add_animal" />
 
     <fragment
         android:id="@+id/reservations"

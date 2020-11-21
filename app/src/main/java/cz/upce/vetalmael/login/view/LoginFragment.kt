@@ -22,7 +22,6 @@ import kotlinx.android.synthetic.main.fragment_login.progressBar
 import kotlinx.android.synthetic.main.fragment_login.registerButton
 import kotlinx.android.synthetic.main.fragment_login.usernameEditText
 import kotlinx.android.synthetic.main.fragment_login.usernameTextLayout
-import kotlinx.android.synthetic.main.fragment_registration.*
 
 class LoginFragment(
     private val viewModel: LoginViewModel
@@ -57,7 +56,7 @@ class LoginFragment(
             viewModel.onTextChanged(usernameEditText.text.toString(), text.toString())
         }
 
-        loginButton.setOnClickListener {
+        saveButton.setOnClickListener {
             viewModel.login()
         }
 
@@ -95,11 +94,11 @@ class LoginFragment(
         }
 
         // Loading visible.
-        loginButton.setVisibleOrInvisible(!viewData.isLoading)
+        saveButton.setVisibleOrInvisible(!viewData.isLoading)
         progressBar.setVisibleOrInvisible(viewData.isLoading)
 
         // Button enabled.
-        loginButton.isEnabled = viewData.isButtonEnabled
+        saveButton.isEnabled = viewData.isButtonEnabled
     }
 
     private fun onEvent(event: Event<LoginEvent>) {

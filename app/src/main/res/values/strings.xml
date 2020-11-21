@@ -29,4 +29,5 @@
 
     <string name="empty_animal_list">Nemáte žádné zvíře.\nPřidejte ho pomocí tlačítka plus vpravo dole.</string>
     <string name="empty_reservation_list">Nemáte žádné rezervace.\nRezervujte si termín pomocí tlačítka plus vpravo dole.</string>
+    <string name="name">Jméno</string>
 </resources>

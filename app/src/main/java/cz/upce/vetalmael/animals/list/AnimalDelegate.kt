@@ -1,4 +1,4 @@
-package cz.upce.vetalmael.animals
+package cz.upce.vetalmael.animals.list
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateLayoutContainer
 import cz.upce.vetalmael.R

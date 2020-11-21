@@ -2,10 +2,17 @@ package cz.upce.vetalmael.data.source.animal
 
 import cz.upce.vetalmael.api.VetAlmaelApi
 import cz.upce.vetalmael.data.model.Animal
+import cz.upce.vetalmael.data.model.dto.AddAnimalRequest
+import cz.upce.vetalmael.data.source.application.ApplicationRepository
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 class AnimalRepositoryImpl(
     private val api: VetAlmaelApi
-) : AnimalRepository {
+) : AnimalRepository, KoinComponent {
+
+    // Use setter injection to prevent weird dependency circles.
+    private val applicationRepository: ApplicationRepository by inject()
 
     private var animalsCache: List<Animal> = emptyList()
 
@@ -23,6 +30,16 @@ class AnimalRepositoryImpl(
     override suspend fun getAnimal(id: Int): Animal {
         val predicate: (Animal) -> Boolean = { it.idAnimal == id }
         return getAnimals(false).find(predicate) ?: api.getAnimal(id)
+    }
+
+    override suspend fun addAnimal(name: String) {
+        val userId = applicationRepository.getCurrentUser()?.idUser!!
+        val body = AddAnimalRequest(name)
+        val animal = api.addAnimal(userId, body)
+        
+        val newCache = animalsCache.toMutableList()
+        newCache.add(animal)
+        animalsCache = newCache.toList()
     }
 
     override fun erase() {
