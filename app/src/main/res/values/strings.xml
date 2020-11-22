@@ -28,14 +28,27 @@
     <string name="password_too_short_error">Heslo musí obsahovat alespoň 8 znaků.</string>
 
     <string name="empty_animal_list">Nemáte žádné zvíře.\nPřidejte ho pomocí tlačítka plus vpravo dole.</string>
+    <string name="empty_animal_card">Nemáte žádné návštěvy veterináře.\nRezervujte si termín pomocí této aplikace..</string>
     <string name="empty_reservation_list">Nemáte žádné rezervace.\nRezervujte si termín pomocí tlačítka plus vpravo dole.</string>
     <string name="name">Jméno</string>
     <string name="clinic">Klinika</string>
     <string name="time_of_visit">Čas návštěvy</string>
     <string name="select_date">Vybrat datum</string>
     <string name="select_time">Vybrat čas</string>
-    <string name="reports">Reporty</string>
+    <string name="card">Karta</string>
+    <string name="animal_card">Karta zvířete</string>
     <string name="messages">Zprávy</string>
     <string name="delete">Smazat</string>
     <string name="empty_message_list">Nemáte žádné zprávy o tomto zvířeti.\nPokud máte nějaké dotazy napište zprávu.</string>
+    <string name="download_pdf">Stáhnout PDF</string>
+
+    <string name="report_id_text">Návštěva číslo #%s\nDne %s</string>
+    <string name="report_state_waiting">Stav: Čeká na veterináře</string>
+    <string name="report_state">Stav: Zpracováno veterinářem (%s)</string>
+    <string name="report_animal">Zvíře: %s</string>
+    <string name="report_text_description">Textový popis: %s</string>
+    <string name="report_text_diagnosis">Textová diagnóza: %s</string>
+    <string name="report_text_recommendation">Doporučení: %s</string>
+    <string name="report_diagnosis">Diagnóza: %s</string>
+    <string name="report_operation">Operace: %s</string>
 </resources>

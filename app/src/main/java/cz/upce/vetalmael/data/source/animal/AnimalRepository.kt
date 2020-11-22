@@ -3,6 +3,7 @@ package cz.upce.vetalmael.data.source.animal
 import cz.upce.vetalmael.base.repository.ErasableRepository
 import cz.upce.vetalmael.data.model.Animal
 import cz.upce.vetalmael.data.model.Message
+import cz.upce.vetalmael.data.model.Report
 
 interface AnimalRepository : ErasableRepository {
 
@@ -17,4 +18,6 @@ interface AnimalRepository : ErasableRepository {
     suspend fun getMessages(animalId: Int): List<Message>
 
     suspend fun sendMessage(animalId: Int, message: String): Message
+
+    suspend fun getReports(animalId: Int): List<Report>
 }

@@ -3,6 +3,7 @@ package cz.upce.vetalmael.data.source.animal
 import cz.upce.vetalmael.api.VetAlmaelApi
 import cz.upce.vetalmael.data.model.Animal
 import cz.upce.vetalmael.data.model.Message
+import cz.upce.vetalmael.data.model.Report
 import cz.upce.vetalmael.data.model.dto.AddAnimalRequest
 import cz.upce.vetalmael.data.model.dto.SendMessageRequest
 import cz.upce.vetalmael.data.source.application.ApplicationRepository
@@ -62,6 +63,10 @@ class AnimalRepositoryImpl(
     override suspend fun sendMessage(animalId: Int, message: String): Message {
         val body = SendMessageRequest(message)
         return api.sendMessage(animalId, body)
+    }
+
+    override suspend fun getReports(animalId: Int): List<Report> {
+        return api.getAnimalReports(animalId)
     }
 
     override fun erase() {

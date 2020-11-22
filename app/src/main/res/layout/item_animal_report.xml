@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:minHeight="120dp"
+        android:padding="@dimen/size_16dp">
+
+        <TextView
+            android:id="@+id/reportIdTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Návštěva číslo #678" />
+
+        <TextView
+            android:id="@+id/stateTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/reportIdTextView"
+            app:layout_constraintStart_toStartOf="@id/reportIdTextView"
+            app:layout_constraintTop_toBottomOf="@id/reportIdTextView"
+            tools:text="Čeká na veterináře" />
+
+        <TextView
+            android:id="@+id/animalTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/stateTextView"
+            app:layout_constraintStart_toStartOf="@id/stateTextView"
+            app:layout_constraintTop_toBottomOf="@id/stateTextView"
+            tools:text="Čeká na veterináře" />
+
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/animalTextView"
+            app:layout_constraintStart_toStartOf="@id/animalTextView"
+            app:layout_constraintTop_toBottomOf="@id/animalTextView"
+            tools:text="Zvíře má potíže" />
+
+        <TextView
+            android:id="@+id/diagnosisTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/descriptionTextView"
+            app:layout_constraintStart_toStartOf="@id/descriptionTextView"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTextView"
+            tools:text="Zvíře má potíže" />
+
+        <TextView
+            android:id="@+id/recommendationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/diagnosisTextView"
+            app:layout_constraintStart_toStartOf="@id/diagnosisTextView"
+            app:layout_constraintTop_toBottomOf="@id/diagnosisTextView"
+            tools:text="Zvíře má potíže" />
+
+        <TextView
+            android:id="@+id/diagnosis2TextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/recommendationTextView"
+            app:layout_constraintStart_toStartOf="@id/recommendationTextView"
+            app:layout_constraintTop_toBottomOf="@id/recommendationTextView"
+            tools:text="Zvíře má potíže" />
+
+        <TextView
+            android:id="@+id/operationTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="@id/diagnosis2TextView"
+            app:layout_constraintStart_toStartOf="@id/diagnosis2TextView"
+            app:layout_constraintTop_toBottomOf="@id/diagnosis2TextView"
+            tools:text="Zvíře má potíže" />
+
+        <LinearLayout
+            android:id="@+id/medicinesLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/operationTextView"
+            app:layout_constraintStart_toStartOf="@id/operationTextView"
+            app:layout_constraintTop_toBottomOf="@id/operationTextView" />
+
+        <LinearLayout
+            android:id="@+id/consumablesLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@id/medicinesLayout"
+            app:layout_constraintStart_toStartOf="@id/medicinesLayout"
+            app:layout_constraintTop_toBottomOf="@id/medicinesLayout" />
+
+        <Button
+            android:id="@+id/exportButton"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/download_pdf"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/consumablesLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

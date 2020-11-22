@@ -62,7 +62,7 @@ class AnimalsFragment(
     }
 
     private fun onReportsClicked(animal: AnimalViewData) {
-        // TODO: Handle animal click.
+        findNavController().navigate(AnimalsFragmentDirections.actionAnimalsToAnimalCard(animal.id.toInt()))
     }
 
     private fun onMessagesClicked(animal: AnimalViewData) {
