@@ -50,40 +50,42 @@ class AnimalCardFragment(
             contentLoadinglayout.showLoading()
             try {
                 val reports =
-                    animalRepository.getReports(navigationArguments.animalId).map { report ->
-                        val na = "N/A"
-                        val reportState = when (report.reportState) {
-                            ReportState.READY -> getString(R.string.report_state_waiting)
-                            ReportState.DONE -> getString(
-                                R.string.report_state,
-                                report.veterinary?.fullName ?: na
+                    animalRepository.getReports(navigationArguments.animalId)
+                        .sortedByDescending { it.date }
+                        .map { report ->
+                            val na = "N/A"
+                            val reportState = when (report.reportState) {
+                                ReportState.READY -> getString(R.string.report_state_waiting)
+                                ReportState.DONE -> getString(
+                                    R.string.report_state,
+                                    report.veterinary?.fullName ?: na
+                                )
+                            }
+
+                            val diagnosis = report.diagnosis?.name ?: na
+                            val operation = report.operation?.name ?: na
+
+                            val consumables = report.consumables.map {
+                                it.name
+                            }
+                            val medicines = report.medicines.map {
+                                it.name
+                            }
+
+                            ReportViewData(
+                                id = report.idReport.toString(),
+                                animal = report.animal.name,
+                                date = dateFormat.format(report.date),
+                                textDescription = report.textDescription,
+                                textRecommendation = report.textRecommendation ?: na,
+                                textDiagnosis = report.textDiagnosis ?: na,
+                                reportState = reportState,
+                                consumables = consumables,
+                                medicines = medicines,
+                                diagnosis = diagnosis,
+                                operation = operation
                             )
                         }
-
-                        val diagnosis = report.diagnosis?.name ?: na
-                        val operation = report.operation?.name ?: na
-
-                        val consumables = report.consumables.map {
-                            it.name
-                        }
-                        val medicines = report.medicines.map {
-                            it.name
-                        }
-
-                        ReportViewData(
-                            id = report.idReport.toString(),
-                            animal = report.animal.name,
-                            date = dateFormat.format(report.date),
-                            textDescription = report.textDescription,
-                            textRecommendation = report.textRecommendation ?: na,
-                            textDiagnosis = report.textDiagnosis ?: na,
-                            reportState = reportState,
-                            consumables = consumables,
-                            medicines = medicines,
-                            diagnosis = diagnosis,
-                            operation = operation
-                        )
-                    }
                 adapter.items = reports
                 emptyStateLayout.setVisibleOrGone(reports.isEmpty())
                 contentLoadinglayout.showData()
