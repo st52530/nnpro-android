@@ -14,7 +14,6 @@ import cz.upce.vetalmael.data.model.Message
 import cz.upce.vetalmael.data.model.UserRole
 import cz.upce.vetalmael.data.source.animal.AnimalRepository
 import cz.upce.vetalmael.extensions.setVisibleOrGone
-import kotlinx.android.synthetic.main.fragment_animals.*
 import kotlinx.android.synthetic.main.fragment_messages.*
 import kotlinx.android.synthetic.main.fragment_messages.contentLoadinglayout
 import kotlinx.android.synthetic.main.fragment_messages.emptyStateLayout
@@ -40,7 +39,7 @@ class MessagesFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        reyclerview_message_list.adapter = adapter
+        recyclerView.adapter = adapter
 
         emptyStateTextView.setText(R.string.empty_message_list)
 
@@ -50,11 +49,11 @@ class MessagesFragment(
 
         toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
-        edittext_chatbox.doOnTextChanged { text, _, _, _ ->
-            button_chatbox_send.isEnabled = text?.isNotEmpty() == true
+        messageEditText.doOnTextChanged { text, _, _, _ ->
+            sendButton.isEnabled = text?.isNotEmpty() == true
         }
 
-        button_chatbox_send.setOnClickListener {
+        sendButton.setOnClickListener {
             sendMessage()
         }
 
@@ -66,15 +65,18 @@ class MessagesFragment(
             try {
                 val message = animalRepository.sendMessage(
                     navigationArgs.animalId,
-                    edittext_chatbox.text.toString()
+                    messageEditText.text.toString()
                 )
                 adapter.items = adapter.items.toMutableList().apply {
                     add(message.toViewData())
                     emptyStateLayout.setVisibleOrGone(isEmpty())
                 }
 
-                edittext_chatbox.setText("")
-                button_chatbox_send.isEnabled = false
+                messageEditText.setText("")
+                sendButton.isEnabled = false
+                recyclerView.post {
+                    recyclerView.scrollToPosition(adapter.itemCount - 1)
+                }
             } catch (exception: Exception) {
                 Timber.e(exception)
             }
