@@ -1,5 +1,8 @@
 package cz.upce.vetalmael.animals.card
 
+import android.content.Context
+import android.graphics.Typeface
+import android.widget.TextView
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateLayoutContainer
 import cz.upce.vetalmael.R
 import kotlinx.android.synthetic.main.item_animal_report.*
@@ -21,8 +24,35 @@ fun animalReportDelegate(
         recommendationTextView.text =
             getString(R.string.report_text_recommendation, item.textRecommendation)
         diagnosis2TextView.text = getString(R.string.report_diagnosis, item.diagnosis)
-        diagnosis2TextView.text = getString(R.string.report_operation, item.operation)
+        operationTextView.text = getString(R.string.report_operation, item.operation)
 
-        // TODO: Medicines + consumables
+        medicinesLayout.removeAllViews()
+        if (item.medicines.isEmpty()) {
+            medicinesLayout.addView(context.createTextView("Nebyly použity žádné léky"))
+        } else {
+            medicinesLayout.addView(context.createTextView("Využité léky:", true))
+            item.medicines.forEach { medicine ->
+                medicinesLayout.addView(context.createTextView(medicine))
+            }
+        }
+
+        consumablesLayout.removeAllViews()
+        if (item.medicines.isEmpty()) {
+            medicinesLayout.addView(context.createTextView("Nebyl použit žádný spotřební materiál"))
+        } else {
+            medicinesLayout.addView(context.createTextView("Využitý spotřební materiál:", true))
+            item.medicines.forEach { consumable ->
+                medicinesLayout.addView(context.createTextView(consumable))
+            }
+        }
+    }
+}
+
+private fun Context.createTextView(text: String, bold: Boolean = false): TextView {
+    return TextView(this, null, R.style.TextAppearance_VetAlmael_Subtitle1).apply {
+        this.text = text
+        if (bold) {
+            setTypeface(null, Typeface.BOLD)
+        }
     }
 }
