@@ -30,5 +30,5 @@ val fragmentModule = module {
 
     fragment { MessagesFragment(get()) }
 
-    fragment { AnimalCardFragment(get()) }
+    fragment { AnimalCardFragment(get(), get()) }
 }

@@ -1,24 +1,31 @@
 package cz.upce.vetalmael.animals.card
 
+import android.app.DownloadManager
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import cz.upce.vetalmael.BuildConfig
 import cz.upce.vetalmael.R
-import cz.upce.vetalmael.animals.list.AnimalsFragmentDirections
+import cz.upce.vetalmael.api.interceptors.AuthenticationInterceptor
 import cz.upce.vetalmael.core.view.recyclerview.DiffUtilAdapter
 import cz.upce.vetalmael.core.view.recyclerview.IdentifiableDiffUtilAdapter
 import cz.upce.vetalmael.data.model.ReportState
 import cz.upce.vetalmael.data.source.animal.AnimalRepository
+import cz.upce.vetalmael.data.source.application.ApplicationRepository
 import cz.upce.vetalmael.extensions.setVisibleOrGone
 import kotlinx.android.synthetic.main.fragment_animal_card.*
 import kotlinx.android.synthetic.main.include_empty_state.*
 import java.text.SimpleDateFormat
 
 class AnimalCardFragment(
-    private val animalRepository: AnimalRepository
+    private val animalRepository: AnimalRepository,
+    private val applicationRepository: ApplicationRepository
 ) : Fragment(R.layout.fragment_animal_card) {
 
     private val adapter: DiffUtilAdapter<ReportViewData> by lazy {
@@ -96,8 +103,22 @@ class AnimalCardFragment(
     }
 
     private fun onExportClicked(report: ReportViewData) {
-        lifecycleScope.launchWhenCreated {
-            // TODO!
-        }
+        val reportUrl = "${BuildConfig.API_URL}export/${report.id}"
+        val request = DownloadManager.Request(reportUrl.toUri())
+        request.setTitle("Záznam o vyšetření")
+        request.setDescription("Záznam ze dne ${report.date}.")
+
+        val token = applicationRepository.getAccessToken()
+        request.addRequestHeader(AuthenticationInterceptor.AUTHENTICATION_TOKEN_NAME, "Bearer $token")
+
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+
+        request.setDestinationInExternalPublicDir(
+            Environment.DIRECTORY_DOWNLOADS,
+            "report-${report.date}.pdf"
+        )
+
+        val manager = getSystemService(requireContext(), DownloadManager::class.java)!!
+        manager.enqueue(request)
     }
 }
