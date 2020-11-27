@@ -50,12 +50,18 @@ class AnimalCardFragment(
             loadReports()
         }
 
+        swipyRefreshLayout.setOnRefreshListener {
+            loadReports(isRefresh = true)
+        }
+
         loadReports()
     }
 
-    private fun loadReports() {
+    private fun loadReports(isRefresh: Boolean = false) {
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            contentLoadinglayout.showLoading()
+            if (!isRefresh) {
+                contentLoadinglayout.showLoading()
+            }
             try {
                 val reports =
                     animalRepository.getReports(navigationArguments.animalId)
@@ -99,6 +105,8 @@ class AnimalCardFragment(
                 contentLoadinglayout.showData()
             } catch (exception: Exception) {
                 contentLoadinglayout.showError()
+            } finally {
+                swipyRefreshLayout.isRefreshing = false
             }
         }
     }

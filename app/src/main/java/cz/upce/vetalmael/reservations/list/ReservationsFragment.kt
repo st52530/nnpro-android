@@ -48,28 +48,36 @@ class ReservationsFragment(
             findNavController().navigate(ReservationsFragmentDirections.actionReservationsToAddReservation())
         }
 
+        swipyRefreshLayout.setOnRefreshListener {
+            loadReservations(force = true, isRefreshing = true)
+        }
+
         loadReservations()
     }
 
-    private fun loadReservations(force: Boolean = false) {
+    private fun loadReservations(force: Boolean = false, isRefreshing: Boolean = false) {
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            contentLoadinglayout.showLoading()
+            if (!isRefreshing) {
+                contentLoadinglayout.showLoading()
+            }
             try {
                 val reservations = reservationRepository.getReservations(force)
                     .sortedByDescending { it.date }
                     .map { reservation ->
-                    ReservationViewData(
-                        reservation.idReservation.toString(),
-                        reservation.clinic.name,
-                        dateFormat.format(reservation.date),
-                        timeFormat.format(reservation.date)
-                    )
-                }
+                        ReservationViewData(
+                            reservation.idReservation.toString(),
+                            reservation.clinic.name,
+                            dateFormat.format(reservation.date),
+                            timeFormat.format(reservation.date)
+                        )
+                    }
                 adapter.items = reservations
                 emptyStateLayout.setVisibleOrGone(reservations.isEmpty())
                 contentLoadinglayout.showData()
             } catch (exception: Exception) {
                 contentLoadinglayout.showError()
+            } finally {
+                swipyRefreshLayout.isRefreshing = false
             }
         }
     }

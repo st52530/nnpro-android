@@ -39,12 +39,18 @@ class AnimalsFragment(
             findNavController().navigate(AnimalsFragmentDirections.actionAnimalsToAddAnimal())
         }
 
+        swipyRefreshLayout.setOnRefreshListener {
+            loadAnimals(force = true, isRefreshing = true)
+        }
+
         loadAnimals()
     }
 
-    private fun loadAnimals(force: Boolean = false) {
+    private fun loadAnimals(force: Boolean = false, isRefreshing: Boolean = false) {
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            contentLoadinglayout.showLoading()
+            if (!isRefreshing) {
+                contentLoadinglayout.showLoading()
+            }
             try {
                 val animals = animalsRepository.getAnimals(force).map {
                     AnimalViewData(
@@ -57,6 +63,8 @@ class AnimalsFragment(
                 contentLoadinglayout.showData()
             } catch (exception: Exception) {
                 contentLoadinglayout.showError()
+            } finally {
+                swipyRefreshLayout.isRefreshing = false
             }
         }
     }
