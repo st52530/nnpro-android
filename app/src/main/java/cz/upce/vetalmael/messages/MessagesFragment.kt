@@ -61,7 +61,7 @@ class MessagesFragment(
     }
 
     private fun sendMessage() {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             try {
                 val message = animalRepository.sendMessage(
                     navigationArgs.animalId,
@@ -84,7 +84,7 @@ class MessagesFragment(
     }
 
     private fun loadMessages() {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             contentLoadinglayout.showLoading()
             try {
                 val messages = animalRepository.getMessages(navigationArgs.animalId)

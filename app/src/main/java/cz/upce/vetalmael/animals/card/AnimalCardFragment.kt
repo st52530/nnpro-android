@@ -53,7 +53,7 @@ class AnimalCardFragment(
     }
 
     private fun loadReports() {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             contentLoadinglayout.showLoading()
             try {
                 val reports =

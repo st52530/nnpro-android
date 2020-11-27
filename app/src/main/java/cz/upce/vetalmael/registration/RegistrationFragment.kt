@@ -115,7 +115,7 @@ class RegistrationFragment(
     }
 
     private fun register() {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             try {
                 showLoading(true)
                 registrationUseCase.register(

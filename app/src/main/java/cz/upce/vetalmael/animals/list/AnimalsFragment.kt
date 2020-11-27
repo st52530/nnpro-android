@@ -43,7 +43,7 @@ class AnimalsFragment(
     }
 
     private fun loadAnimals(force: Boolean = false) {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             contentLoadinglayout.showLoading()
             try {
                 val animals = animalsRepository.getAnimals(force).map {
@@ -74,7 +74,7 @@ class AnimalsFragment(
             .setTitle("Smazat zvíře")
             .setMessage("Opravdu chcete smazat toto zvíře?\nJméno: ${animal.name}")
             .setPositiveButton("Smazat") { _, _ ->
-                lifecycleScope.launchWhenCreated {
+                viewLifecycleOwner.lifecycleScope.launchWhenCreated {
                     try {
                         animalsRepository.deleteAnimal(animal.id.toInt())
                         adapter.items = adapter.items.toMutableList().apply {

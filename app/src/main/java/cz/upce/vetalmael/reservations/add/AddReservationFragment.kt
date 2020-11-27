@@ -49,7 +49,7 @@ class AddReservationFragment(
     }
 
     private fun loadData(force: Boolean = true) {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             contentLoadinglayout.showLoading()
             try {
                 val clinics = clinicRepository.getClinics(force)
@@ -155,7 +155,7 @@ class AddReservationFragment(
         clinicInputLayout.error = null
         dateTextLayout.error = null
 
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             try {
                 val clinic = selectedClinic?.idClinic ?: return@launchWhenCreated
                 showLoading(true)

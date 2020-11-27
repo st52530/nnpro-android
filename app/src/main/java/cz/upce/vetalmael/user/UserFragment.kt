@@ -42,7 +42,7 @@ class UserFragment(
     }
 
     private fun logout() {
-        lifecycleScope.launchWhenStarted {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
             logoutUsecase.logout()
 
             // Navigate out after logout.

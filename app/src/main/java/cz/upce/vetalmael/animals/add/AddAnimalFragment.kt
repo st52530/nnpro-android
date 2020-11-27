@@ -35,7 +35,7 @@ class AddAnimalFragment(
     }
 
     private fun saveClicked() {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             try {
                 showLoading(true)
                 animalRepository.addAnimal(

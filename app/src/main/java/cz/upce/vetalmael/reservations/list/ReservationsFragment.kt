@@ -52,7 +52,7 @@ class ReservationsFragment(
     }
 
     private fun loadReservations(force: Boolean = false) {
-        lifecycleScope.launchWhenCreated {
+        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             contentLoadinglayout.showLoading()
             try {
                 val reservations = reservationRepository.getReservations(force)
@@ -79,7 +79,7 @@ class ReservationsFragment(
             .setTitle("Zrušit rezervaci")
             .setMessage("Opravdu chcete zrušit tuto rezervaci?\nRezervace: ${reservation.date} ${reservation.time}")
             .setPositiveButton("Zrušit rezervaci") { _, _ ->
-                lifecycleScope.launchWhenCreated {
+                viewLifecycleOwner.lifecycleScope.launchWhenCreated {
                     try {
                         reservationRepository.deleteReservation(reservation.id.toInt())
                         adapter.items = adapter.items.toMutableList().apply {
