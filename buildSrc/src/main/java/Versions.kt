@@ -38,5 +38,7 @@ object Versions {
 
     const val retrofit = "2.9.0"
 
+    const val swipyRefresh = "1.2.3@aar"
+
     const val timber = "4.7.1"
 }

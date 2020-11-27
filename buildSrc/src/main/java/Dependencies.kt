@@ -63,5 +63,7 @@ object Dependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
+    const val swipyRefresh = "com.github.omadahealth:swipy:${Versions.swipyRefresh}"
+
     const val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 }

@@ -57,6 +57,10 @@ class MessagesFragment(
             sendMessage()
         }
 
+        swipyRefreshLayout.setOnRefreshListener {
+            loadMessages(isRefresh = true)
+        }
+
         loadMessages()
     }
 
@@ -83,9 +87,11 @@ class MessagesFragment(
         }
     }
 
-    private fun loadMessages() {
+    private fun loadMessages(isRefresh: Boolean = false) {
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            contentLoadinglayout.showLoading()
+            if (!isRefresh) {
+                contentLoadinglayout.showLoading()
+            }
             try {
                 val messages = animalRepository.getMessages(navigationArgs.animalId)
                     .map { message ->
@@ -97,6 +103,8 @@ class MessagesFragment(
             } catch (exception: Exception) {
                 Timber.e(exception)
                 contentLoadinglayout.showError()
+            } finally {
+                swipyRefreshLayout.isRefreshing = false
             }
         }
     }

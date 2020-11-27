@@ -105,6 +105,9 @@ dependencies {
     implementation Dependencies.retrofit
     implementation Dependencies.retrofitGson
 
+    // Swipy refresh layout.
+    implementation Dependencies.swipyRefresh
+
     // Timber.
     implementation Dependencies.timber
 
