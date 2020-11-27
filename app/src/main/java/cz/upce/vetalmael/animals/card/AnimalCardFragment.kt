@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.snackbar.Snackbar
 import cz.upce.vetalmael.BuildConfig
 import cz.upce.vetalmael.R
 import cz.upce.vetalmael.api.interceptors.AuthenticationInterceptor
@@ -109,7 +110,10 @@ class AnimalCardFragment(
         request.setDescription("Záznam ze dne ${report.date}.")
 
         val token = applicationRepository.getAccessToken()
-        request.addRequestHeader(AuthenticationInterceptor.AUTHENTICATION_TOKEN_NAME, "Bearer $token")
+        request.addRequestHeader(
+            AuthenticationInterceptor.AUTHENTICATION_TOKEN_NAME,
+            "Bearer $token"
+        )
 
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
 
@@ -120,5 +124,11 @@ class AnimalCardFragment(
 
         val manager = getSystemService(requireContext(), DownloadManager::class.java)!!
         manager.enqueue(request)
+
+        Snackbar.make(
+            requireView(),
+            "Stahuji záznam o vyšetření (zkontrolujte notifikace)",
+            Snackbar.LENGTH_LONG
+        ).show()
     }
 }
