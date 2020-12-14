@@ -35,8 +35,10 @@ class UserFragment(
         }
 
         nameTextView.text = user.fullName
-        emailTextView.text = user.email
-        usernameTextView.text = user.username
+        emailTextView.text = "Email: " + user.email
+        usernameTextView.text = "Přihlašovací jméno: " + user.username
+        addressTextView.text = "Adresa: " + user.address
+        phoneNumberTextView.text = "Telefon: " + user.phoneNumber
 
         contentLoadinglayout.showData()
     }
