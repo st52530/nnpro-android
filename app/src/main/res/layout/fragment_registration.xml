@@ -72,6 +72,46 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/phoneTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_16dp"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:hint="Telefon"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/emailTextLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/addressTextLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_16dp"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:hint="Adresa"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneTextLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/addressEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <View
             android:id="@+id/divider"
             android:layout_width="0dp"
@@ -79,9 +119,9 @@
             android:layout_marginHorizontal="50dp"
             android:layout_marginTop="8dp"
             android:background="@color/colorSecondary"
-            app:layout_constraintEnd_toEndOf="@id/emailTextLayout"
-            app:layout_constraintStart_toStartOf="@id/emailTextLayout"
-            app:layout_constraintTop_toBottomOf="@id/emailTextLayout" />
+            app:layout_constraintEnd_toEndOf="@id/addressTextLayout"
+            app:layout_constraintStart_toStartOf="@id/addressTextLayout"
+            app:layout_constraintTop_toBottomOf="@id/addressTextLayout" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usernameTextLayout"

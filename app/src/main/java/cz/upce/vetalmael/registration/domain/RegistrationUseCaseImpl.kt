@@ -13,10 +13,17 @@ class RegistrationUseCaseImpl(
         username: String,
         fullName: String,
         email: String,
-        password: String
+        password: String,
+        address: String,
+        phoneNumber: String
     ) {
         val body = SignUpBody(
-            username, fullName, email, password
+            username = username,
+            fullName = fullName,
+            email = email,
+            password = password,
+            address = address,
+            phoneNumber = phoneNumber
         )
         api.signUp(body)
 

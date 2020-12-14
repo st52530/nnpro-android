@@ -6,6 +6,8 @@ interface RegistrationUseCase {
         username: String,
         fullName: String,
         email: String,
-        password: String
+        password: String,
+        address: String,
+        phoneNumber: String
     )
 }

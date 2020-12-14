@@ -15,6 +15,7 @@ import cz.upce.vetalmael.extensions.setVisibleOrInvisible
 import cz.upce.vetalmael.registration.domain.RegistrationUseCase
 import kotlinx.android.synthetic.main.fragment_registration.*
 import timber.log.Timber
+import java.util.regex.Pattern
 
 class RegistrationFragment(
     private val registrationUseCase: RegistrationUseCase
@@ -47,6 +48,14 @@ class RegistrationFragment(
         }
 
         password2EditText.doAfterTextChanged {
+            validateInput()
+        }
+
+        addressEditText.doAfterTextChanged {
+            validateInput()
+        }
+
+        phoneEditText.doAfterTextChanged {
             validateInput()
         }
 
@@ -107,11 +116,30 @@ class RegistrationFragment(
             password2TextLayout.safeSetError(null)
         }
 
+        if (!isValidPhone(phoneEditText.text)) {
+            isValid = false
+            if (phoneEditText.text?.isNotEmpty() == true) {
+                phoneTextLayout.safeSetError(getString(R.string.phone_error))
+            } else {
+                phoneTextLayout.safeSetError(null)
+            }
+        } else {
+            phoneTextLayout.safeSetError(null)
+        }
+
+        if (addressEditText.text.isNullOrEmpty()) {
+            isValid = false
+        }
+
         registerButton.isEnabled = isValid
     }
 
     private fun isValidEmail(target: CharSequence?): Boolean {
         return !target.isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(target).matches()
+    }
+
+    private fun isValidPhone(target: CharSequence?): Boolean {
+        return !target.isNullOrEmpty() && PHONE_PATTERN.matcher(target).matches()
     }
 
     private fun register() {
@@ -122,7 +150,9 @@ class RegistrationFragment(
                     username = usernameEditText.text.toString(),
                     fullName = fullNameEditText.text.toString(),
                     email = emailEditText.text.toString(),
-                    password = passwordEditText.text.toString()
+                    password = passwordEditText.text.toString(),
+                    address = addressEditText.text.toString(),
+                    phoneNumber = phoneEditText.text.toString()
                 )
 
                 // Use logout action to pop the whole navigation stack.
@@ -134,6 +164,8 @@ class RegistrationFragment(
                 emailTextLayout.error = emptyError
                 usernameTextLayout.error = emptyError
                 passwordTextLayout.error = emptyError
+                phoneTextLayout.error = emptyError
+                addressTextLayout.error = emptyError
                 password2TextLayout.error = getString(R.string.general_error)
             } finally {
                 showLoading(false)
@@ -149,5 +181,13 @@ class RegistrationFragment(
     companion object {
 
         private const val MIN_PASSWORD_LENGTH = 8
+
+        private val PHONE_PATTERN = Pattern.compile( // sdd = space, dot, or dash
+            "(\\+[0-9]{1,3})? ?[0-9]{3} ?[0-9]{3} ?[0-9]{3}"
+        )
+//        "(\\+[0-9]+[\\- \\.]*)?" // +<digits><sdd>*
+//        + "(\\([0-9]+\\)[\\- \\.]*)?" // (<digits>)<sdd>*
+//        + "([0-9][0-9\\- \\.]+[0-9])"
+
     }
 }
